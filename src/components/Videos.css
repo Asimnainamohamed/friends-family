@@ -1,0 +1,111 @@
+.videos {
+  background: var(--dark2);
+  padding: 8rem 2rem;
+}
+
+.videos-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.videos-sub {
+  color: var(--muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  margin-top: 1rem;
+}
+
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.vid-card {
+  position: relative;
+  aspect-ratio: 9/16;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--dark3);
+  border: 1px solid rgba(201,168,76,0.1);
+  transition: border-color 0.3s ease;
+}
+
+.vid-card:hover { border-color: rgba(201,168,76,0.4); }
+
+.vid-el {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.vid-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.vid-overlay.playing {
+  background: rgba(0,0,0,0.15);
+}
+
+.vid-overlay.playing .vid-play-btn {
+  opacity: 0;
+}
+
+.vid-card:hover .vid-play-btn { opacity: 1; }
+
+.vid-play-btn {
+  width: 64px;
+  height: 64px;
+  background: rgba(201,168,76,0.9);
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 30px rgba(201,168,76,0.4);
+}
+
+.vid-play-btn:hover { transform: scale(1.1); }
+
+.vid-info {
+  position: absolute;
+  bottom: 1.2rem;
+  left: 1.2rem;
+  right: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.vid-year {
+  font-size: 0.7rem;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.vid-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--cream);
+}
+
+@media (max-width: 768px) {
+  .videos-grid { grid-template-columns: repeat(2, 1fr); }
+  .vid-card { aspect-ratio: 9/16; }
+}
